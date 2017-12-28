@@ -1463,4 +1463,10 @@ config TOUCHSCREEN_IST30XX
 	depends on I2C
 
 source "drivers/input/touchscreen/IST30xx/Kconfig"
+
+config TOUCHSCREEN_DOUBLETAP2WAKE
+	bool "DoubleTap2Wake for touchscreens"
+	depends on TOUCHSCREEN_FT5336
+	default n
+
 endif
