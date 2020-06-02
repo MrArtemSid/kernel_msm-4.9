@@ -1,3 +1,4 @@
+ifneq ($(CONFIG_MACH_XIAOMI),y)
 dtb-$(CONFIG_ARCH_QCOM)	+= apq8016-sbc.dtb msm8916-mtp.dtb
 dtb-$(CONFIG_ARCH_QCOM)	+= msm8996-mtp.dtb
 dtb-$(CONFIG_ARCH_QCOM)	+= apq8096-db820c.dtb
@@ -677,3 +678,4 @@ dtb-$(CONFIG_ARCH_SDM845_VM) += sdm845-vm.dtb
 always		:= $(dtb-y)
 subdir-y	:= $(dts-dirs)
 clean-files	:= *.dtb
+endif
