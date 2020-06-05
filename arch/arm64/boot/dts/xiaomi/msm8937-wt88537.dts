@@ -14,7 +14,7 @@
 /dts-v1/;
 
 #include "../qcom/msm8937.dtsi"
-#include "../qcom/msm-pmi8950.dtsi"
+#include "../qcom/pmi8950.dtsi"
 #include "../qcom/msm8937-qrd.dtsi"
 #include "../qcom/msm8937-mdss-panels.dtsi"
 #include "common/msm8937-common.dtsi"
@@ -35,4 +35,31 @@
 		#include "land/batterydata-qrd-Coslight-4v4-4000mah.dtsi"
 		#include "land/batterydata-qrd-feimaotui-4v4-4000mah.dtsi"
 	};
+};
+
+&wsa881x_i2c_f {
+	status = "disabled";
+};
+
+&wsa881x_i2c_45 {
+	status = "disabled";
+};
+
+&int_codec {
+		/delete-property/ asoc-wsa-codec-names;
+		/delete-property/ asoc-wsa-codec-prefixes;
+		/delete-property/ msm-vdd-wsa-switch-supply;
+		/delete-property/ qcom,msm-vdd-wsa-switch-voltage;
+		/delete-property/ qcom,msm-vdd-wsa-switch-current;
+		/delete-property/ qcom,msm-gpios;
+		/delete-property/ qcom,pinctrl-names;
+		/delete-property/ pinctrl-names;
+		/delete-property/ pinctrl-0;
+		/delete-property/ pinctrl-1;
+};
+
+&mdss_fb0 { /delete-node/ qcom,cont-splash-memory;};
+
+&apps_iommu {
+	qcom,no-aarch64;
 };
