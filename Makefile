@@ -815,6 +815,16 @@ else
 KBUILD_CFLAGS += $(call cc-disable-warning, unused-but-set-variable)
 endif
 
+# Optimize for CPU
+KBUILD_CFLAGS	+= $(call cc-option,-march=armv8-a+crypto+crc,) $(call cc-option,-mcpu=cortex-a53+crypto+crc,)
+
+# Cortex-A53 optimizations
+arch-$(CONFIG_ARCH_MSM8937)	:= $(call cc-option,-mcpu=cortex-a53+crc+crypto,-march=armv8-a+crc+crypto)
+tune-$(CONFIG_ARCH_MSM8937)	:= -mtune=cortex-a53
+
+KBUILD_CFLAGS	+= $(arch-y) $(tune-y)
+KBUILD_AFLAGS	+= $(arch-y) $(tune-y)
+
 KBUILD_CFLAGS += $(call cc-disable-warning, unused-const-variable)
 ifdef CONFIG_FRAME_POINTER
 KBUILD_CFLAGS	+= -fno-omit-frame-pointer -fno-optimize-sibling-calls
