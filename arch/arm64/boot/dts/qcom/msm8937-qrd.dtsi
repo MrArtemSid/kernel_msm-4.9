@@ -14,14 +14,6 @@
 #include "msm8937-pinctrl.dtsi"
 #include "msm8937-camera-sensor-qrd.dtsi"
 
-&qpnp_smbcharger {
-	dpdm-supply = <&usb_otg>;
-};
-
-&usb_otg {
-	extcon = <&qpnp_smbcharger>;
-};
-
 &soc {
 	gpio_keys {
 		compatible = "gpio-keys";

@@ -60,6 +60,9 @@
        status = "okay";
        qcom,vchg_sns-vadc = <&pmi8950_vadc>;
        qcom,vchg-adc-channel-id = <3>;
+       qcom,chg-led-sw-controls;
+       qcom,chg-led-support;
+	   dpdm-supply = <&usb_otg>;
 };
 
 &qpnp_fg {
@@ -86,6 +89,7 @@
 
 &usb_otg {
 	qcom,usbin-vadc = <&pmi8950_vadc>;
+	extcon = <&qpnp_smbcharger>;
 };
 
 &apc_vreg_corner {
