@@ -27,11 +27,14 @@
 				qcom,qpnp-ibb-init-lcd-voltage = <5500000>;
 			};
 		};
-	};
-	qcom,pmi8950@3 {
+		
 		qcom,haptics@c000 {
 			qcom,actuator-type = <1>;
 		};
+		
+		wled: qcom,leds@d800 {
+      			qcom,wled-stepper-en;
+    		};
 	};
 };
 
@@ -53,6 +56,7 @@
 };
 
 &qpnp_smbcharger {
+	/delete-property/qcom,autoadjust-vfloat;
        qcom,battery-data = <&qrd_batterydata>;
        qcom,float-voltage-mv = <4400>;
        qcom,chg-inhibit-fg;
@@ -93,5 +97,11 @@
 };
 
 &apc_vreg_corner {
-	/delete-property/ qcom.cpr-enable;
+	/delete-property/ qcom,cpr-enable;
 };
+
+&sdhc_1 {
+  qcom,vdd-always-on;
+};
+
+
